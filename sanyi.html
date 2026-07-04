@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Patricio 🤍</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f0e6ff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* --- ESTILOS DEL SOBRE INTERACTIVO --- */
+        #contenedor-sobre {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sobre {
+            width: 280px;
+            height: 180px;
+            background-color: #ffccd5;
+            position: relative;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            cursor: pointer;
+        }
+
+            .sobre::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-left: 140px solid transparent;
+                border-right: 140px solid transparent;
+                border-top: 100px solid #ffb3c1;
+                transform-origin: top;
+                transition: transform 0.5s ease;
+                z-index: 3;
+            }
+
+        .corazon-cierre {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            color: #ff4d6d;
+            z-index: 4;
+        }
+
+        .texto-sobre {
+            margin-top: 25px;
+            font-size: 1.2rem;
+            color: #5e503f;
+            font-weight: bold;
+            text-align: center;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
+
+        .sobre.abierto::before {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        /* --- ESTILOS DE LA CARTA --- */
+        #carta-contenido {
+            display: none;
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            border-radius: 24px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(162, 123, 222, 0.2);
+            text-align: center;
+        }
+
+        .titulo {
+            font-size: 1.6rem;
+            color: #4a3e3d;
+            margin-bottom: 5px;
+        }
+
+        .subtitulo {
+            font-size: 0.9rem;
+            color: #a39391;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .imagen-pucca {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 16px;
+            margin: 15px auto;
+            display: block;
+        }
+
+        .parrafo {
+            font-size: 1.05rem;
+            color: #5c5150;
+            line-height: 1.6;
+            margin: 20px 0;
+            text-align: justify;
+        }
+
+        .btn-mensaje {
+            display: inline-block;
+            background-color: #ff4d6d;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 15px;
+            cursor: pointer;
+            border: none;
+        }
+
+        #mensaje-oculto {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ffe6ea;
+            color: #ff4d6d;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="contenedor-sobre">
+        <div class="sobre" onclick="abrirSobre()">
+            <div class="corazon-cierre">❤️</div>
+        </div>
+        <div class="texto-sobre">✨ Aplasta el sobre para abrirlo ✨</div>
+    </div>
+
+    <div id="carta-contenido">
+        <h1 class="titulo">Para Patricio 🤍</h1>
+        <div class="subtitulo">sammm-12.github.io/para-patricio</div>
+
+        <img class="imagen-pucca" src="WhatsApp Image 2026-07-04 at 14.10.37 (1).jpg" alt="Pucca 1">
+
+        <h1 class="titulo">De Sanyi para Patricio</h1>
+        <p class="parrafo">Coincidir contigo es mi parte favorita de los días. Gracias por estar, por la calma y por las risas... incluso cuando me sacas de quicio. ✨</p>
+
+        <img class="imagen-pucca" src="WhatsApp Image 2026-07-04 at 14.10.37 (2).jpg" alt="Pucca 2">
+
+        <p class="parrafo">No sé qué nos depara el destino, ni hacia dónde vamos, pero aquí y ahora, me hace feliz caminar a tu lado. Que todo fluya a su propio tiempo. 🌙</p>
+
+        <img class="imagen-pucca" src="WhatsApp Image 2026-07-04 at 14.10.37 (3).jpg" alt="Pucca 3">
+
+        <p class="parrafo">Me gusta descubrir tu mundo, tu forma de hablar y encontrarte en los detalles más inesperados. Te quiero más de lo que suelo decir. 🧸</p>
+
+        <img class="imagen-pucca" src="WhatsApp Image 2026-07-04 at 14.10.37.jpg" alt="Pucca 4">
+
+        <br>
+        <button class="btn-mensaje" onclick="mostrarMensaje()">un mensajito para ti ✨</button>
+        <div id="mensaje-oculto">¡Te quiero muchísimo! Eres una persona extremadamente especial para mí. ❤️</div>
+    </div>
+
+    <script>
+        function abrirSobre() {
+            document.querySelector('.sobre').classList.add('abierto');
+            setTimeout(() => {
+                document.getElementById('contenedor-sobre').style.display = 'none';
+                document.getElementById('carta-contenido').style.display = 'block';
+            }, 1000);
+        }
+        function mostrarMensaje() {
+            var m = document.getElementById('mensaje-oculto');
+            if (m.style.display === 'block') {
+                m.style.display = 'none';
+            } else {
+                m.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html></html>
